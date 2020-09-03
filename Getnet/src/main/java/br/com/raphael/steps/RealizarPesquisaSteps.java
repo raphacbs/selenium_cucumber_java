@@ -13,13 +13,19 @@ import br.com.raphael.pages.HomePage;
 import br.com.raphael.util.Constants;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class RealizarPesquisaSteps {
 	
-	private HomePage homePage = new HomePage(WebDriverChrome.instance());
+	private HomePage homePage;
+	
+	@Before
+	public void initBrowser() {
+		homePage = new HomePage(WebDriverChrome.instance());
+	}
 	
 	@Given("^Acessar o site$")
 	public void acessar_o_site() throws Exception {
